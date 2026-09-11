@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "./styles/App.css";
+
+@theme inline {
+  --color-card: var(--card-color);
+  --color-complete: var(--complete-color);
+  --color-update: var(--update-color);
+  --color-delete: var(--delete-color);
+  --color-text: var(--text-color);
+  --color-bg: var(--bg-color);
+  --color-field: var(--field-color);
+  --color-border: var(--border-color);
+  --color-button: var(--button-color);
+  --hover-button: var(---button-hover);
+  --color-button-text: var(--text-button);
+}
+
+html {
+  scroll-behavior: smooth;
+}

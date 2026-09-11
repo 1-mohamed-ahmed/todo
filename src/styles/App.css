@@ -1,0 +1,13 @@
+:root {
+  --card-color: #252f88;
+  --complete-color: #80bb40;
+  --update-color: #587299;
+  --delete-color: #761331;
+  --text-color: #cfd7ff;
+  --bg-color: #ffffff;
+  --field-color: #848484;
+  --button-hover: #98163d;
+  --border-color: #e5e5e5;
+  --button-color: #f9edf2;
+  /* --text-button: #814152; */
+}
