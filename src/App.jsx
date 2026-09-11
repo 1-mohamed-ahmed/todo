@@ -53,7 +53,7 @@ function App() {
         setUpdateId: setUpdateId,
       }}
     >
-      <div className="w-full p-3 h-full overflow-hidden sm:flex items-center justify-center sm:bg-black">
+      <div className="w-full p-3 min-h-screen overflow-hidden sm:flex items-center justify-center sm:bg-black">
         <div className="w-full h-full bg-white sm:w-1/2 md:w-1/2  rounded-[10px] pt-13 px-3 ">
           <Header />
           <Card />

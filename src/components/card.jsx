@@ -8,5 +8,7 @@ export default function Card() {
     return <CustomeCard key={todo.id} todoList={todo} />;
   });
 
-  return <div className="h-150  sm:h-137.5 overflow-y-auto">{cardItem}</div>;
+  return (
+    <div className={`max-h-100 sm:max-h-120 overflow-y-auto`}>{cardItem}</div>
+  );
 }
