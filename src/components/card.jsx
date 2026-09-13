@@ -12,16 +12,24 @@ export default function Card({ setTodoToDelete }) {
 
   // Add new task
   function toggleTodo(id) {
+    const todo = myContext.todos.find((t) => t.id === id);
+    const newCompletedState = !todo.isCompleted;
     const updateCompleted = myContext.todos.map((t) => {
       if (t.id == id) {
+        // showSnackbar("تم إكمال المهمة بنجاح! ✅", "success");
         return {
           ...t,
-          isCompleted: !t.isCompleted,
+          isCompleted: newCompletedState,
         };
       }
       return t;
     });
     myContext.setTodos(updateCompleted);
+    if (newCompletedState) {
+      myContext.showSnackbar("تم إكمال المهمة بنجاح! ✅", "success");
+    } else {
+      myContext.showSnackbar("تم إلغاء إكمال المهمة", "info");
+    }
   }
 
   function handleUpdate(taskId) {

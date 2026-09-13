@@ -8,6 +8,8 @@ import ShowDialog from "./components/dialog";
 //  =========== OTHER =============
 import { TodosContext } from "./contexts/todosContext";
 import { useState, useEffect } from "react";
+// import { Snackbar } from "@mui/material";
+import ShowSnackbar from "./components/snackBar";
 
 function App() {
   //  =========== STATES =============
@@ -19,6 +21,11 @@ function App() {
   const [input, setInput] = useState("");
   const [updateId, setUpdateId] = useState(null);
   const [todoToDelete, setTodoToDelete] = useState(null);
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
 
   // save todos in localStorage automatically during use setTodos
   useEffect(() => {
@@ -29,8 +36,20 @@ function App() {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== taskId));
 
     setTodoToDelete(null);
+    showSnackbar("تم  حذف المهمة! ✅", "success");
   }
 
+  function handleClose() {
+    setSnackbar({ ...snackbar, open: false });
+  }
+
+  function showSnackbar(message, severity = "success") {
+    setSnackbar({
+      open: true,
+      message,
+      severity,
+    });
+  }
   //  =========== ========= =============
 
   return (
@@ -44,6 +63,7 @@ function App() {
         setInput: setInput,
         updateId: updateId,
         setUpdateId: setUpdateId,
+        showSnackbar: showSnackbar,
       }}
     >
       <div className="w-full p-3 min-h-screen overflow-hidden sm:flex items-center justify-center sm:bg-black">
@@ -58,6 +78,12 @@ function App() {
               deleteTodo={deleteTodo}
             />
           )}
+          <ShowSnackbar
+            handleClose={handleClose}
+            message={snackbar.message}
+            open={snackbar.open}
+          />
+
           <Footer />
         </div>
       </div>

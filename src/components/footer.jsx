@@ -26,6 +26,7 @@ export default function Footer() {
           return todo;
         }
       });
+      myContext.showSnackbar("تم تعديل المهمة! ✅", "success");
 
       myContext.setTodos(updateTodo);
       myContext.setUpdateId(null);
@@ -35,6 +36,7 @@ export default function Footer() {
     }
 
     addTask(myContext.input);
+    myContext.showSnackbar("تم اضافة المهمة! ✅", "success");
 
     myContext.setInput("");
   }
