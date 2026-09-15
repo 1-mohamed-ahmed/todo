@@ -1,6 +1,11 @@
 import { Trash, Pencil, Check } from "lucide-react";
 
-export default function TodoItem({ todo, onToggle, onDelete, onEdit }) {
+export default function TodoItem({
+  todo,
+  handleDelete,
+  handleUpdate,
+  handleComplete,
+}) {
   const isCompleted = todo.isCompleted;
   const bgClass = isCompleted ? "bg-white" : "bg-[#80bb40]";
   const iconColor = isCompleted ? "#80bb40" : "white";
@@ -10,7 +15,7 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }) {
     <div className="flex justify-between bg-(--color-card) items-center my-4 px-3 py-3 rounded-lg hover:shadow-xl/20 transition-all duration-150 ease-out hover:py-4">
       <div className="buttons flex items-center gap-3">
         <button
-          onClick={() => onDelete(todo)}
+          onClick={() => handleDelete(todo)}
           className="border-2 border-delete rounded-full p-2 bg-white cursor-pointer hover:opacity-80 transition-opacity"
           title="حذف"
         >
@@ -18,7 +23,7 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }) {
         </button>
 
         <button
-          onClick={() => onEdit(todo)}
+          onClick={() => handleUpdate(todo)}
           className="border-2 border-update rounded-full p-2 bg-white cursor-pointer hover:opacity-80 transition-opacity"
           title="تعديل"
         >
@@ -26,7 +31,7 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }) {
         </button>
 
         <button
-          onClick={() => onToggle(todo.id)}
+          onClick={() => handleComplete(todo.id)}
           className={`border-2 border-(--color-complete) rounded-full p-2 ${bgClass} cursor-pointer hover:opacity-80 transition-opacity`}
           title={isCompleted ? "إلغاء الإكمال" : "إكتملت"}
         >
